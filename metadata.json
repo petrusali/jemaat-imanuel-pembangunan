@@ -1,0 +1,8 @@
+{
+  "name": "Remix: Remix: Jemaat Imanuel Pembangunan",
+  "description": "Aplikasi informasi komitmen donasi dan progress pembangunan Gereja Methodist Indonesia - Jemaat Imanuel.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
