@@ -1,0 +1,23 @@
+flowchart TD
+    START["Jemaat klik<br/>'Bayar Bulan ke-X'"] --> CART["WooCommerce Add-to-Cart<br/>(produk virtual 'Janji Iman Bulan X - Rp xxx')"]
+    CART --> CHECKOUT["WooCommerce Checkout<br/>Pilih metode pembayaran"]
+
+    CHECKOUT --> DECISION{"Metode Pembayaran?"}
+
+    DECISION -->|"QRIS / VA"| MIDTRANS["Midtrans memproses pembayaran"]
+    MIDTRANS --> CALLBACK["callback Midtrans →<br/>WooCommerce order status = completed"]
+    CALLBACK --> HOOK["hook: woocommerce_order_status_completed"]
+    HOOK --> UPDATE["custom handler:<br/>update wp_janji_iman_payment.status = verified"]
+
+    DECISION -->|"Transfer Manual"| UPLOAD["Upload bukti di order notes"]
+    UPLOAD --> PENDING["status = pending<br/>Sekretariat review di wp-admin"]
+    PENDING --> REVIEW{"Sekretariat review"}
+    REVIEW -->|"approve"| VERIFIED["status = verified"]
+    REVIEW -->|"reject"| REJECTED["status = rejected + alasan"]
+
+    style START fill:#e8eaf6,stroke:#283593
+    style DECISION fill:#fff9c4,stroke:#f57f17
+    style REVIEW fill:#fff9c4,stroke:#f57f17
+    style VERIFIED fill:#c8e6c9,stroke:#2e7d32
+    style REJECTED fill:#ffcdd2,stroke:#c62828
+    style MIDTRANS fill:#e1f5fe,stroke:#01579b

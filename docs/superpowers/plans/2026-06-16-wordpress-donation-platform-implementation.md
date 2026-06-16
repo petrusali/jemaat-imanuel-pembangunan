@@ -4,7 +4,7 @@
 
 **Goal:** WordPress single-tenant donation platform. Donasi recording, QRIS/VA payment, manual transfer verification, Janji Iman M1-M24 tracker, member registration + approval, announcements, PWA. **Target: 2-3 minggu.**
 
-**Architecture:** WordPress di LocalWP (local dev) → Staging Hostinger → Production Hostinger. Plugin-first: Ultimate Member, WooCommerce, Midtrans, Super PWA, Elementor, GeneratePress. 1 custom plugin `janji-iman-tracker`.
+**Architecture:** WordPress di Docker (local dev) → Staging Hostinger → Production Hostinger. Plugin-first: Ultimate Member, WooCommerce, Midtrans, Super PWA, Elementor, GeneratePress. 1 custom plugin `janji-iman-tracker`.
 
 **What 🤖 Can Do:** Write code files ke filesystem lokal, generate SQL, buat instruksi konfigurasi detail, verify code consistency, rewrite/edit code based on feedback.
 
@@ -17,7 +17,7 @@
 ```
 ┌─────────────────────────────────────────────────────────┐
 │ PHASE A: LOCAL DEV SETUP (Hari 1)                        │
-│ ✋ Install LocalWP + semua plugin                         │
+│ ✋ Setup Docker + install semua plugin                     │
 │ 🤖 Siapkan direktori custom plugin                        │
 ├─────────────────────────────────────────────────────────┤
 │ PHASE B: CUSTOM PLUGIN DEVELOPMENT (Hari 1-5)            │
@@ -57,28 +57,113 @@
 
 ## Prerequisites (Sebelum Mulai)
 
-- [ ] ✋ **Download & install LocalWP** dari https://localwp.com (gratis, Windows)
-- [ ] ✋ **Create site di LocalWP:** klik "+" → "Create a New Site" → nama: `gmi-imanuel` → PHP 8.x, MySQL 8.x, nginx → Continue
-- [ ] ✋ **Note LocalWP site path:** default di `C:\Users\[User]\Local Sites\gmi-imanuel\app\public\`
-- [ ] ✋ **Buka wp-admin LocalWP** (klik "Admin" di LocalWP UI) → login
+- [ ] ✋ **Pastikan Docker terinstall** (`docker --version`), Docker Compose juga (`docker compose version`). Download dari https://docker.com jika belum.
+- [ ] ✋ **Buat docker-compose.yml** (🤖 agent akan generate) di root project. Jalankan `docker compose up -d` — tunggu sampai semua container healthy.
+- [ ] ✋ **Buka WordPress install wizard** di http://localhost:8080 → isi site title `GMI Imanuel Pembangunan`, username `admin`, password yang aman, email — klik Install.
+- [ ] ✋ **Buka wp-admin** di http://localhost:8080/wp-admin → login.
+- [ ] ✋ **Note plugin path:** custom plugin ada di `./wp-content/plugins/janji-iman-tracker/` (mount dari project root ke container)
+- [ ] ✋ **Buka phpMyAdmin** di http://localhost:8081 (user: `root`, pass: `rootpass`) — untuk verifikasi DB tables nanti
 - [ ] ✋ **Daftar Hostinger WooCommerce Hosting** (bisa paralel, tidak blocking) → tidak perlu langsung dipakai
 - [ ] ✋ **Daftar Midtrans** di https://midtrans.com (bisa paralel, proses KYC 1-2 minggu) → tidak blocking karena ada fallback transfer manual
+- [ ] ✋ **Beli Elementor Pro Advanced Solo** di https://elementor.com/pricing/ — pilih **Advanced Solo** ($6.50/bln, annual $78/thn). Elementor Free **tidak punya Theme Builder, Form Builder, dan WooCommerce Builder** yang dibutuhkan project ini. Ultimate Member, Super PWA, WooCommerce, GeneratePress tetap gratis.
 
 ---
 
 ## PHASE A: Plugin Installation (Hari 1)
 
+### Task A0: Docker Setup
+
+🤖 **AGENT** — Generate `docker-compose.yml` di root project:
+
+```yaml
+version: '3.8'
+
+services:
+  wp:
+    image: wordpress:latest
+    ports:
+      - '8080:80'
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: wpuser
+      WORDPRESS_DB_PASSWORD: wppass
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DEBUG: 'true'
+    volumes:
+      - ./wp-content/plugins/janji-iman-tracker:/var/www/html/wp-content/plugins/janji-iman-tracker
+      - wp-content:/var/www/html/wp-content
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wpuser
+      MYSQL_PASSWORD: wppass
+      MYSQL_ROOT_PASSWORD: rootpass
+    volumes:
+      - db-data:/var/lib/mysql
+    ports:
+      - '3306:3306'
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    ports:
+      - '8081:80'
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: rootpass
+
+volumes:
+  wp-content:
+  db-data:
+```
+
+✋ **HUMAN** — Jalankan:
+
+```bash
+# 1. Start semua container
+docker compose up -d
+
+# 2. Cek semua container running (3 container: wp, db, phpmyadmin)
+docker compose ps
+
+# 3. Buka http://localhost:8080 — WordPress install wizard
+#    - Site Title: GMI Imanuel Pembangunan
+#    - Username: admin
+#    - Password: [buat yang aman]
+#    - Email: [email gereja]
+#    - Klik "Install WordPress"
+
+# 4. Login di http://localhost:8080/wp-admin
+
+# 5. phpMyAdmin tersedia di http://localhost:8081
+#    - Server: db, User: root, Pass: rootpass
+```
+
+**Cleanup:**
+```bash
+docker compose down          # Stop container, data tetap ada (volumes persist)
+docker compose down -v       # Hapus SEMUA termasuk database — sistem kembali bersih
+```
+
+**Note:** Custom plugin yang agent tulis akan ditaruh di `./wp-content/plugins/janji-iman-tracker/` (project root) dan otomatis ter-mount ke container WordPress. Edit file di host langsung berefek di container.
+
+---
+
 ### Task A1: Install semua plugin via wp-admin
 
-✋ **HUMAN** — Buka wp-admin LocalWP → Plugins → Add New. Install & activate semua ini:
+✋ **HUMAN** — Buka http://localhost:8080/wp-admin → Plugins → Add New. Install & activate semua ini:
 
 ```
-☐ GeneratePress (theme)
-☐ Elementor (page builder)
-☐ Ultimate Member
-☐ WooCommerce
+☐ GeneratePress (theme) — gratis
+☐ Elementor Pro — **Advanced Solo** (sudah dibeli di Prerequisites, upload .zip dari my.elementor.com)
+☐ Ultimate Member — gratis, free tier cukup untuk role management
+☐ WooCommerce — gratis
 ☐ Midtrans for WooCommerce (install tapi jangan setup dulu)
-☐ Super PWA (install tapi jangan setup dulu)
+☐ Super PWA — gratis, free tier cukup untuk PWA + offline cache
 ```
 
 Setelah selesai, beri tahu agent: **"Semua plugin installed."**
@@ -87,7 +172,7 @@ Setelah selesai, beri tahu agent: **"Semua plugin installed."**
 
 ## PHASE B: Custom Plugin — Janji Iman Tracker (Hari 1-5)
 
-> 🤖 Agent writes ALL code to `C:\Users\[User]\Local Sites\gmi-imanuel\app\public\wp-content\plugins\janji-iman-tracker\`
+> 🤖 Agent writes ALL code to `./wp-content/plugins/janji-iman-tracker/` (project root, mounted ke container)
 
 ### Task B1: Bootstrap plugin + DB tables
 
@@ -199,10 +284,10 @@ class JIT_Activator {
 ```
 
 ✋ **HUMAN** — Setelah agent menulis file:
-1. Verify file ada di `Local Sites\gmi-imanuel\app\public\wp-content\plugins\janji-iman-tracker\`
+1. Verify file ada di `./wp-content/plugins/janji-iman-tracker/` (project root)
 2. Buka wp-admin → Plugins → cari "Janji Iman Tracker" → **Activate**
-3. Buka Tools → Site Health → Info → Database → verify `wp_janji_iman` dan `wp_janji_iman_payment` ada
-4. Atau buka http://gmi-imanuel.local/wp-admin → URL phpMyAdmin bawaan LocalWP
+3. Buka phpMyAdmin di http://localhost:8081 → database `wordpress` → cari `wp_janji_iman` dan `wp_janji_iman_payment` → verify ada
+4. Atau: wp-admin → Tools → Site Health → Info → Database → verify tables ada
 5. Laporkan ke agent: **"Plugin activated, DB tables OK"** atau **"Error: [pesan error]"**
 
 ---
@@ -757,7 +842,7 @@ Setelah selesai, laporkan: **"UM configured."**
 
 ```
 1. Buat test user Jemaat (wp-admin → Users → Add New → role: Jemaat)
-2. Insert test Janji Iman via LocalWP Database tool:
+2. Insert test Janji Iman via phpMyAdmin (http://localhost:8081, db: wordpress):
    INSERT INTO wp_janji_iman (user_id, total_komitmen, nominal_per_bulan, mulai_bulan)
    VALUES ([TEST_USER_ID], 24000000, 1000000, '2026-08-01');
 3. Login sebagai jemaat test
@@ -874,7 +959,8 @@ wp-admin → Super PWA → Settings:
 
 ✋ **HUMAN** — Test di HP:
 ```
-1. Buka http://[IP_LOCAL]:[PORT] di Chrome Android (LocalWP kasih live link)
+1. Buka http://[IP_LAN]:8080 di Chrome Android (pakai IP lokal Mac: System Settings → Network → IP address)
+   atau gunakan ngrok: `ngrok http 8080` untuk dapat URL publik
 2. Harus muncul "Add to Home Screen"
 3. Install → buka → harus fullscreen tanpa address bar
 4. Matikan wifi → buka lagi → harus muncul halaman offline
@@ -952,7 +1038,7 @@ Laporkan hasil ke agent: **"[Scenario X]: PASS / FAIL — [detail]"**
 
 | Hari | ✋ Human | 🤖 Agent |
 |------|---------|----------|
-| **1** | Install LocalWP, semua plugin | Tulis semua kode plugin (B1-B4) |
+| **1** | Setup Docker, semua plugin | Tulis semua kode plugin (B1-B4) |
 | **2** | Activate plugin, test DB tables | Revisi kode dari feedback human |
 | **3** | WooCommerce config (C1) | Revisi kode dari feedback human |
 | **4** | UM roles + forms (C2) | Generate instruksi konfigurasi |

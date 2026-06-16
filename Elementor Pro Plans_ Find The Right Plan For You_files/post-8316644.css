@@ -1,0 +1,104 @@
+.elementor-widget-countdown .elementor-countdown-item{background-color:var( --e-global-color-primary );}.elementor-widget-countdown .elementor-countdown-digits{font-family:var( --e-global-typography-text-font-family ), "Roobert Hebrew", Sans-serif;font-weight:var( --e-global-typography-text-font-weight );letter-spacing:var( --e-global-typography-text-letter-spacing );}.elementor-widget-countdown .elementor-countdown-label{font-family:var( --e-global-typography-secondary-font-family ), "Roobert Hebrew", Sans-serif;font-weight:var( --e-global-typography-secondary-font-weight );letter-spacing:var( --e-global-typography-secondary-letter-spacing );}.elementor-widget-countdown .elementor-countdown-expire--message{color:var( --e-global-color-text );font-family:var( --e-global-typography-text-font-family ), "Roobert Hebrew", Sans-serif;font-weight:var( --e-global-typography-text-font-weight );letter-spacing:var( --e-global-typography-text-letter-spacing );}.elementor-8316644 .elementor-element.elementor-element-182066e4{margin:0rem 1.5rem calc(var(--kit-widget-spacing, 0px) + -0.2rem) 1.5rem;z-index:2;}.elementor-8316644 .elementor-element.elementor-element-182066e4.elementor-element{--align-self:center;}body:not(.rtl) .elementor-8316644 .elementor-element.elementor-element-182066e4 .elementor-countdown-item:not(:first-of-type){margin-left:calc( 1rem/2 );}body:not(.rtl) .elementor-8316644 .elementor-element.elementor-element-182066e4 .elementor-countdown-item:not(:last-of-type){margin-right:calc( 1rem/2 );}body.rtl .elementor-8316644 .elementor-element.elementor-element-182066e4 .elementor-countdown-item:not(:first-of-type){margin-right:calc( 1rem/2 );}body.rtl .elementor-8316644 .elementor-element.elementor-element-182066e4 .elementor-countdown-item:not(:last-of-type){margin-left:calc( 1rem/2 );}.elementor-8316644 .elementor-element.elementor-element-182066e4 .elementor-countdown-item{padding:0px 0px 0px 0px;background-color:#92003B00;}.elementor-8316644 .elementor-element.elementor-element-182066e4 .elementor-countdown-digits{color:#2A0624;font-family:"Roobert", "Roobert Hebrew", Sans-serif;font-size:1.25rem;font-weight:600;line-height:1em;}.elementor-8316644 .elementor-element.elementor-element-182066e4 .elementor-countdown-label{color:#2A0624;font-family:"Roobert", "Roobert Hebrew", Sans-serif;font-size:0.75rem;font-weight:400;line-height:1em;}body:not(.rtl) .elementor-8316644 .elementor-element.elementor-element-3161740f{left:0px;}body.rtl .elementor-8316644 .elementor-element.elementor-element-3161740f{right:0px;}.elementor-8316644 .elementor-element.elementor-element-3161740f{bottom:-48rem;}.elementor-8316644 .elementor-element.elementor-element-22a7e945{width:auto;max-width:auto;top:0px;}body:not(.rtl) .elementor-8316644 .elementor-element.elementor-element-22a7e945{left:0px;}body.rtl .elementor-8316644 .elementor-element.elementor-element-22a7e945{right:0px;}.elementor-widget-icon.elementor-view-stacked .elementor-icon{background-color:var( --e-global-color-primary );}.elementor-widget-icon.elementor-view-framed .elementor-icon, .elementor-widget-icon.elementor-view-default .elementor-icon{color:var( --e-global-color-primary );border-color:var( --e-global-color-primary );}.elementor-widget-icon.elementor-view-framed .elementor-icon, .elementor-widget-icon.elementor-view-default .elementor-icon svg{fill:var( --e-global-color-primary );}body:not(.rtl) .elementor-8316644 .elementor-element.elementor-element-611c15cb{right:2.5rem;}body.rtl .elementor-8316644 .elementor-element.elementor-element-611c15cb{left:2.5rem;}.elementor-8316644 .elementor-element.elementor-element-611c15cb{z-index:2;}.elementor-8316644 .elementor-element.elementor-element-611c15cb .elementor-icon-wrapper{text-align:center;}.elementor-8316644 .elementor-element.elementor-element-611c15cb.elementor-view-stacked .elementor-icon{background-color:#2A0624;color:#FFFFFF;}.elementor-8316644 .elementor-element.elementor-element-611c15cb.elementor-view-framed .elementor-icon, .elementor-8316644 .elementor-element.elementor-element-611c15cb.elementor-view-default .elementor-icon{color:#2A0624;border-color:#2A0624;}.elementor-8316644 .elementor-element.elementor-element-611c15cb.elementor-view-framed .elementor-icon, .elementor-8316644 .elementor-element.elementor-element-611c15cb.elementor-view-default .elementor-icon svg{fill:#2A0624;}.elementor-8316644 .elementor-element.elementor-element-611c15cb.elementor-view-framed .elementor-icon{background-color:#FFFFFF;}.elementor-8316644 .elementor-element.elementor-element-611c15cb.elementor-view-stacked .elementor-icon svg{fill:#FFFFFF;}.elementor-8316644 .elementor-element.elementor-element-611c15cb.elementor-view-stacked .elementor-icon:hover{background-color:#545454;color:#FFFFFF;}.elementor-8316644 .elementor-element.elementor-element-611c15cb.elementor-view-framed .elementor-icon:hover, .elementor-8316644 .elementor-element.elementor-element-611c15cb.elementor-view-default .elementor-icon:hover{color:#545454;border-color:#545454;}.elementor-8316644 .elementor-element.elementor-element-611c15cb.elementor-view-framed .elementor-icon:hover, .elementor-8316644 .elementor-element.elementor-element-611c15cb.elementor-view-default .elementor-icon:hover svg{fill:#545454;}.elementor-8316644 .elementor-element.elementor-element-611c15cb.elementor-view-framed .elementor-icon:hover{background-color:#FFFFFF;}.elementor-8316644 .elementor-element.elementor-element-611c15cb.elementor-view-stacked .elementor-icon:hover svg{fill:#FFFFFF;}.elementor-8316644 .elementor-element.elementor-element-611c15cb .elementor-icon{font-size:3rem;padding:0rem;}.elementor-8316644 .elementor-element.elementor-element-611c15cb .elementor-icon svg{height:3rem;}#elementor-popup-modal-8316644 .dialog-widget-content{animation-duration:1s;background-color:#00000000;}#elementor-popup-modal-8316644 .dialog-message{width:100%;height:auto;}#elementor-popup-modal-8316644{justify-content:center;align-items:flex-end;}@media(max-width:1280px){.elementor-widget-countdown .elementor-countdown-digits{letter-spacing:var( --e-global-typography-text-letter-spacing );}.elementor-widget-countdown .elementor-countdown-label{letter-spacing:var( --e-global-typography-secondary-letter-spacing );}.elementor-widget-countdown .elementor-countdown-expire--message{letter-spacing:var( --e-global-typography-text-letter-spacing );}body:not(.rtl) .elementor-8316644 .elementor-element.elementor-element-611c15cb{right:1.5rem;}body.rtl .elementor-8316644 .elementor-element.elementor-element-611c15cb{left:1.5rem;}}@media(max-width:1024px){.elementor-widget-countdown .elementor-countdown-digits{letter-spacing:var( --e-global-typography-text-letter-spacing );}.elementor-widget-countdown .elementor-countdown-label{letter-spacing:var( --e-global-typography-secondary-letter-spacing );}.elementor-widget-countdown .elementor-countdown-expire--message{letter-spacing:var( --e-global-typography-text-letter-spacing );}.elementor-8316644 .elementor-element.elementor-element-182066e4.elementor-element{--flex-grow:0;--flex-shrink:0;}body:not(.rtl) .elementor-8316644 .elementor-element.elementor-element-182066e4 .elementor-countdown-item:not(:first-of-type){margin-left:calc( 1rem/2 );}body:not(.rtl) .elementor-8316644 .elementor-element.elementor-element-182066e4 .elementor-countdown-item:not(:last-of-type){margin-right:calc( 1rem/2 );}body.rtl .elementor-8316644 .elementor-element.elementor-element-182066e4 .elementor-countdown-item:not(:first-of-type){margin-right:calc( 1rem/2 );}body.rtl .elementor-8316644 .elementor-element.elementor-element-182066e4 .elementor-countdown-item:not(:last-of-type){margin-left:calc( 1rem/2 );}#elementor-popup-modal-8316644 .dialog-message{width:100vw;}#elementor-popup-modal-8316644 .dialog-widget-content{border-radius:0rem 0rem 0rem 0rem;}}@media(max-width:767px){.elementor-widget-countdown .elementor-countdown-digits{letter-spacing:var( --e-global-typography-text-letter-spacing );}.elementor-widget-countdown .elementor-countdown-label{letter-spacing:var( --e-global-typography-secondary-letter-spacing );}.elementor-widget-countdown .elementor-countdown-expire--message{letter-spacing:var( --e-global-typography-text-letter-spacing );}.elementor-8316644 .elementor-element.elementor-element-182066e4{margin:0rem 0rem calc(var(--kit-widget-spacing, 0px) + 0rem) 0rem;}body:not(.rtl) .elementor-8316644 .elementor-element.elementor-element-182066e4 .elementor-countdown-item:not(:first-of-type){margin-left:calc( 0px/2 );}body:not(.rtl) .elementor-8316644 .elementor-element.elementor-element-182066e4 .elementor-countdown-item:not(:last-of-type){margin-right:calc( 0px/2 );}body.rtl .elementor-8316644 .elementor-element.elementor-element-182066e4 .elementor-countdown-item:not(:first-of-type){margin-right:calc( 0px/2 );}body.rtl .elementor-8316644 .elementor-element.elementor-element-182066e4 .elementor-countdown-item:not(:last-of-type){margin-left:calc( 0px/2 );}.elementor-8316644 .elementor-element.elementor-element-182066e4 .elementor-countdown-label{line-height:1.2em;}body:not(.rtl) .elementor-8316644 .elementor-element.elementor-element-611c15cb{right:0.75rem;}body.rtl .elementor-8316644 .elementor-element.elementor-element-611c15cb{left:0.75rem;}.elementor-8316644 .elementor-element.elementor-element-611c15cb{top:1rem;}}/* Start custom CSS for countdown, class: .elementor-element-182066e4 */.elementor-8316644 .elementor-element.elementor-element-182066e4 .elementor-countdown-item {
+    position: relative;
+    min-width: 3.5rem;
+}
+.elementor-8316644 .elementor-element.elementor-element-182066e4 .elementor-countdown-item:not(:last-child):after {
+	content: ':';
+	position: absolute;
+	top: 0;
+	font-size: 1rem;
+	line-height: 1.3rem;
+	font-weight: 700;
+	color: #2A0624;
+	transform: translateX(0.65rem);
+}
+
+.elementor-8316644 .elementor-element.elementor-element-182066e4 .elementor-countdown-digits {
+    margin-inline-end: 0.1rem
+}
+
+@media (max-width: 767px) {
+.elementor-8316644 .elementor-element.elementor-element-182066e4 .elementor-countdown-wrapper {
+    display: flex;
+}
+
+.elementor-8316644 .elementor-element.elementor-element-182066e4 .elementor-countdown-item {
+    min-width: 2.75rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.elementor-8316644 .elementor-element.elementor-element-182066e4 .elementor-countdown-item:not(:last-child):after {
+	top: 0;
+	right: -0.15rem;
+	font-size: 1.25rem;
+	line-height: 1.25rem;
+	font-weight: 400;
+	transform: translateX(0rem);
+}
+}/* End custom CSS */
+/* Start custom CSS for icon, class: .elementor-element-611c15cb */.elementor-8316644 .elementor-element.elementor-element-611c15cb a:focus-visible {
+    outline: none !important;
+    border-radius: 50% !important;
+    box-shadow:
+        0 0 0 2px #1a73e8,
+        0 0 0 4px #fff !important;
+}
+
+.elementor-8316644 .elementor-element.elementor-element-611c15cb .elementor-icon-wrapper {
+    display: flex
+}/* End custom CSS */
+/* Start custom CSS */#elementor-popup-modal-8316644 {
+    position: fixed;
+    z-index: 99 !important;
+}
+
+#elementor-popup-modal-8316644 .dialog-message {
+    width: 100vw;
+    max-width: 100%;
+}
+
+.page-id-2356 .sticky-bar .dsm-btn-wrapper {
+    display: none;
+}
+
+.page-id-2356 .sticky-bar .elementor-widget-countdown {
+    margin-inline-end: 0;
+}/* End custom CSS */
+/* Start Custom Fonts CSS */@font-face {
+	font-family: 'Roobert';
+	font-style: normal;
+	font-weight: normal;
+	font-display: swap;
+	src: url('https://elementor.com/wp-content/uploads/2025/10/Roobert-Regular.woff2') format('woff2'),
+		url('https://elementor.com/wp-content/uploads/2025/10/Roobert-Regular.woff') format('woff'),
+		url('https://elementor.com/wp-content/uploads/2025/10/Roobert-Regular.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Roobert';
+	font-style: normal;
+	font-weight: bold;
+	font-display: swap;
+	src: url('https://elementor.com/wp-content/uploads/2025/10/Roobert-Bold.woff2') format('woff2'),
+		url('https://elementor.com/wp-content/uploads/2025/10/Roobert-Bold.woff') format('woff'),
+		url('https://elementor.com/wp-content/uploads/2025/10/Roobert-Bold-1.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Roobert';
+	font-style: normal;
+	font-weight: 500;
+	font-display: swap;
+	src: url('https://elementor.com/wp-content/uploads/2025/10/Roobert-Medium.woff2') format('woff2'),
+		url('https://elementor.com/wp-content/uploads/2025/10/Roobert-Medium.woff') format('woff'),
+		url('https://elementor.com/wp-content/uploads/2025/10/Roobert-Medium.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Roobert';
+	font-style: normal;
+	font-weight: 600;
+	font-display: swap;
+	src: url('https://elementor.com/wp-content/uploads/2025/10/Roobert-SemiBold.woff2') format('woff2'),
+		url('https://elementor.com/wp-content/uploads/2025/10/Roobert-SemiBold.woff') format('woff'),
+		url('https://elementor.com/wp-content/uploads/2025/10/Roobert-SemiBold.ttf') format('truetype');
+}
+/* End Custom Fonts CSS */

@@ -32,44 +32,7 @@ Sekretariat gereja kesulitan melakukan **pendataan sumbangan jemaat**. Pencatata
 
 ## 2. Architecture Overview
 
-```
-┌──────────────────────────────────────────────────────────┐
-│          Hostinger WooCommerce Managed Hosting            │
-│                                                           │
-│  ┌─────────────────────────────────────────────────────┐ │
-│  │              WordPress Open-Source                    │ │
-│  │                                                       │ │
-│  │  ┌──────────────┐  ┌──────────────┐  ┌────────────┐ │ │
-│  │  │   Ultimate    │  │ WooCommerce  │  │   Custom    │ │ │
-│  │  │   Member      │  │              │  │   Plugin    │ │ │
-│  │  │               │  │ Checkout     │  │   Janji     │ │ │
-│  │  │ Register      │  │ Order Mgmt   │  │   Iman      │ │ │
-│  │  │ Login (ID+PW) │  │ Payment      │  │   Tracker   │ │ │
-│  │  │ Profile       │  │ Gateway      │  │             │ │ │
-│  │  │ Admin Approve │  │ (Midtrans)   │  │ M1-M24 grid │ │ │
-│  │  │ Role: jemaat/ │  │              │  │ Status      │ │ │
-│  │  │ sekretariat   │  │ QRIS / VA /  │  │ per bulan   │ │ │
-│  │  │               │  │ Upload Bukti │  │             │ │ │
-│  │  └──────────────┘  └──────────────┘  └────────────┘ │ │
-│  │                                                       │ │
-│  │  ┌──────────────────────────────────────────────────┐│ │
-│  │  │  WordPress Core                                   ││ │
-│  │  │  • Posts = Pengumuman / Subjek Doa / Loker        ││ │
-│  │  │  • Custom Post Type = Progres Pembangunan          ││ │
-│  │  │  • WP REST API (untuk PWA + future mobile)         ││ │
-│  │  │  • PWA: Super PWA plugin (install to home screen)  ││ │
-│  │  │  • Theme: GeneratePress + Elementor (Free)         ││ │
-│  │  └──────────────────────────────────────────────────┘│ │
-│  └─────────────────────────────────────────────────────┘ │
-└──────────────────────────────────────────────────────────┘
-
-External touchpoints:
-┌─────────────┐     ┌──────────────────┐     ┌──────────────┐
-│  Midtrans   │     │   WhatsApp       │     │   YouTube     │
-│  (QRIS/VA)  │     │   (kontak link)  │     │   (embed live)│
-└─────────────┘     └──────────────────┘     └──────────────┘
-   callback ↑           ↗ click-to-chat        ↗ embed URL
-```
+![Architecture Overview](diagrams/architecture-overview.png)
 
 ### Prinsip Arsitektur
 
@@ -88,7 +51,7 @@ External touchpoints:
 | **WooCommerce** | latest | Engine checkout donasi, order management, order status workflow | Gratis |
 | **Midtrans for WooCommerce** | latest | Payment gateway: QRIS, Virtual Account BCA/Mandiri, GoPay, ShopeePay | Gratis (official) |
 | **Super PWA / PWA for WP** | latest | Install to home screen, offline cache, push notification, splash screen | Gratis |
-| **Elementor** | free | Page builder drag-and-drop untuk custom UI/UX halaman jemaat | Gratis |
+| **Elementor Pro** | Advanced Solo | Page builder drag-and-drop, Theme Builder, Form Builder, Popup Builder, WooCommerce Builder, Custom CSS | **$6.50/bln** (~Rp 100rb) |
 | **GeneratePress** | free | Theme ringan sebagai base, fast & accessible | Gratis |
 | **Custom Plugin: Janji Iman Tracker** | 1.0 | Logic M1-M24 per jemaat, status pelunasan, integrasi ke WooCommerce order | Custom |
 
@@ -141,30 +104,7 @@ CREATE TABLE wp_janji_iman_payment (
 
 ### Alur Integrasi dengan WooCommerce
 
-```
-Jemaat klik "Bayar Bulan ke-X"
-        │
-        ▼
-  WooCommerce Add-to-Cart (produk virtual "Janji Iman Bulan X - Rp xxx")
-        │
-        ▼
-  WooCommerce Checkout → Pilih metode (QRIS / VA / Transfer Manual)
-        │
-        ├─── QRIS / VA ───▶ Midtrans memproses pembayaran
-        │                        │
-        │                   callback Midtrans → WooCommerce order status = completed
-        │                        │
-        │                   hook: woocommerce_order_status_completed
-        │                        │
-        │                   custom handler: update wp_janji_iman_payment.status = verified
-        │
-        └─── Transfer Manual ───▶ Upload bukti di order notes
-                                      │
-                                 status = pending → Sekretariat review di wp-admin
-                                      │
-                                 approve → status = verified
-                                 reject  → status = rejected + alasan
-```
+![WooCommerce Integration Flow](diagrams/woocommerce-integration-flow.png)
 
 ---
 
@@ -235,7 +175,8 @@ Semua role di atas adalah WordPress roles — tidak ada custom RBAC engine yang 
 | SSL | Let's Encrypt (Hostinger bundled) | Gratis |
 | Backup | Hostinger automated daily backup (bundled) | Gratis |
 | CDN | Cloudflare Free Tier | Gratis |
-| **Total operasional** | | **~Rp 59.000/bln** |
+| Elementor Pro (Advanced Solo) | Page builder premium: Theme Builder, WooCommerce Builder, Form Builder | **$6.50/bln** (~Rp 100rb) |
+| **Total operasional** | | **~Rp 159.000/bln** |
 
 ### Tech Specs Hosting
 - PHP 8.x, MySQL 8.x, LiteSpeed Web Server

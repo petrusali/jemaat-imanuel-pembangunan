@@ -1,0 +1,40 @@
+.elementor-1825 .elementor-element.elementor-element-c1709da{--display:flex;--gap:0px 0px;--row-gap:0px;--column-gap:0px;}/* Start custom CSS for stattic-pricing-tables, class: .elementor-element-47a0769 */@media (min-width: 1025px) and (max-width: 1400px) {
+.elementor-1825 .elementor-element.elementor-element-47a0769 .pricing-table.stacked .elementor-loop-container {
+    gap: 1.25rem;
+}
+.elementor-1825 .elementor-element.elementor-element-47a0769 .pricing-table.test .tag-plan-advanced-solo {
+    order: -1;
+}
+}/* End custom CSS */
+/* Start custom CSS */ {
+	--header-primary: #05047E;
+	--header-hover: #5454bd;
+	--mobile-toggle: url("data:image/svg+xml,%3Csvg viewBox='0 0 33 33' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13.3963 21H33M0 13H33' stroke='%2305047E' stroke-width='3'/%3E%3C/svg%3E%0A");
+	--footer-bg: #010051;
+	--footer-accent: #fff;
+	--footer-hover: #fff;
+	-webkit-font-smoothing: antialiased;
+}
+
+ .elementor-button-icon {
+    display: flex;
+}
+
+
+.hideElement {
+	display:none;
+}
+
+
+/* FadeIn Get Started */
+
+ .get-started-btn .elementor-button-text {
+    animation: ctaFadeIn 1s forwards;
+    animation-delay: 0.5s;
+    opacity: 0;
+    transition: opacity .5s ease-in-out
+}
+
+@keyframes ctaFadeIn {
+    100% {opacity: 1;}
+}/* End custom CSS */

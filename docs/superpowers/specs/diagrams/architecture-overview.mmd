@@ -1,0 +1,33 @@
+flowchart TB
+    subgraph HOSTING["Hostinger WooCommerce Managed Hosting"]
+        subgraph WP["WordPress Open-Source"]
+            subgraph PLUGINS["Plugins"]
+                UM["Ultimate Member<br/>Register | Login (ID+PW)<br/>Profile | Admin Approve<br/>Role: jemaat / sekretariat"]
+                WC["WooCommerce<br/>Checkout | Order Mgmt<br/>Payment Gateway (Midtrans)<br/>QRIS / VA / Upload Bukti"]
+                CP["Custom Plugin<br/>Janji Iman Tracker<br/>M1-M24 grid<br/>Status per bulan"]
+            end
+            subgraph CORE["WordPress Core"]
+                POSTS["Posts<br/>Pengumuman / Subjek Doa / Loker"]
+                CPT["Custom Post Type<br/>Progres Pembangunan"]
+                API["WP REST API<br/>(PWA + future mobile)"]
+                PWA["Super PWA plugin<br/>Install to home screen"]
+                THEME["Theme: GeneratePress + Elementor (Free)"]
+            end
+        end
+    end
+
+    subgraph EXTERNAL["External Touchpoints"]
+        MIDTRANS["Midtrans<br/>(QRIS/VA)"]
+        WA["WhatsApp<br/>(kontak link)"]
+        YT["YouTube<br/>(embed live)"]
+    end
+
+    WC -.->|"callback ↑"| MIDTRANS
+    THEME -.->|"click-to-chat ↗"| WA
+    CPT -.->|"embed URL ↗"| YT
+
+    style HOSTING fill:#e1f5fe,stroke:#01579b
+    style WP fill:#fff3e0,stroke:#e65100
+    style PLUGINS fill:#e8f5e9,stroke:#2e7d32
+    style CORE fill:#fce4ec,stroke:#c62828
+    style EXTERNAL fill:#f3e5f5,stroke:#6a1b9a
